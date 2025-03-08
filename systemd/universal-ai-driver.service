@@ -1,0 +1,18 @@
+[Unit]
+Description=Universal AI Driver Service
+After=display-manager.service
+Wants=display-manager.service
+
+[Service]
+Type=simple
+User=root
+Environment=DISPLAY=:0
+Environment=XAUTHORITY=/run/user/1000/gdm/Xauthority
+ExecStartPre=/bin/sleep 10
+ExecStart=/usr/local/bin/universal-ai-driver
+Restart=on-failure
+RestartSec=5
+Nice=-20
+
+[Install]
+WantedBy=graphical.target 
