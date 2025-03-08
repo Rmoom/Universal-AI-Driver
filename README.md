@@ -38,7 +38,7 @@ rpm-ostree install python3-pip vulkan-tools mesa-vulkan-drivers
 # Arahan akan ditambah kemudian
 
 # 3. Clone repo ini
-git clone https://github.com/yourusername/universal-ai-driver
+git clone https://github.com/Rmoom/universal-ai-driver
 
 # 4. Jalankan script pemasangan
 cd universal-ai-driver
