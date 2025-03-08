@@ -1,0 +1,85 @@
+# Konfigurasi Universal AI Driver untuk Linux Silverblue
+
+# Tetapan GPU
+gpu:
+  intel_igpu:
+    enabled: true
+    device_id: "auto"
+    max_power: 15  # ditingkatkan untuk prestasi maksimum
+    ai_workload_priority: low  # kurangkan beban AI pada iGPU
+
+  amd_dgpu:
+    enabled: true
+    device_id: "auto"
+    max_power: 35  # ditingkatkan untuk prestasi maksimum
+    rendering_priority: ultra  # maksimumkan prestasi rendering
+
+# Tetapan AI
+ai:
+  performance_monitoring:
+    enabled: true
+    sampling_rate: 500  # dikurangkan untuk respons lebih cepat
+    fps_target: 100  # ditingkatkan mengikut permintaan
+    temperature_limit: 85  # ditingkatkan untuk prestasi
+    throttling_threshold: 80
+
+  upscaling:
+    enabled: true
+    min_resolution: 480p  # diturunkan untuk FPS lebih tinggi
+    target_resolution: 720p  # diturunkan untuk FPS lebih tinggi
+    quality_preset: low  # keutamakan FPS berbanding kualiti
+
+  frame_generation:
+    enabled: true
+    min_fps_trigger: 80  # trigger lebih awal
+    target_fps: 100
+    interpolation_quality: low  # keutamakan FPS
+
+  latency_optimization:
+    enabled: true
+    target_latency: 5  # dikurangkan untuk respons lebih cepat
+    aggressive_mode: true  # aktifkan mod agresif
+
+# Tetapan Sistem
+system:
+  startup_delay: 5  # dikurangkan untuk boot lebih cepat
+  log_level: warning  # kurangkan logging untuk prestasi
+  temp_directory: "/tmp/universal-ai-driver"
+  config_directory: "/etc/universal-ai-driver"
+  process_priority: -10  # tingkatkan priority proses
+
+# Tetapan Vulkan
+vulkan:
+  version_required: "1.1"
+  validation_layers: false
+  debug_mode: false
+  async_compute: true  # aktifkan compute async
+  threaded_optimization: true  # aktifkan threading
+
+# Tetapan Ray Tracing
+ray_tracing:
+  enabled: false  # kekal dimatikan
+  quality_preset: low
+  max_bounces: 1
+  denoiser: Fast
+
+# Tetapan Pembelajaran
+learning:
+  enabled: false  # matikan untuk maksimumkan prestasi
+  save_interval: 7200
+  max_history_size: 100
+  learning_rate: 0.0005
+  batch_size: 8
+
+# Tetapan Optimasi Tambahan
+optimization:
+  cpu_governor: performance
+  gpu_power_limit_bypass: true
+  thermal_mode: performance
+  memory_priority: high
+  shader_cache: true
+  texture_compression: true
+  preload_shaders: true
+  disable_vsync: true  # matikan vsync untuk FPS maksimum
+  reduce_texture_quality: true
+  low_latency_mode: ultra  # mod latency terendah 
