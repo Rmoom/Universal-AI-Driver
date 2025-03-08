@@ -35,7 +35,21 @@ Sistem pemandu AI yang dioptimumkan untuk Linux Silverblue yang menggunakan Inte
 rpm-ostree install python3-pip vulkan-tools mesa-vulkan-drivers
 
 # 2. Pasang OpenVINO dan ROCm
-# Arahan akan ditambah kemudian
+# OpenVINO
+sudo rpm-ostree override replace --experimental --install intel-openvino
+toolbox create --distro fedora --release 41  
+toolbox enter fedora-41  
+sudo dnf install intel-openvino
+source /opt/intel/openvino/setupvars.sh
+echo 'source /opt/intel/openvino/setupvars.sh' >> ~/.bashrc
+
+# ROCm
+sudo rpm-ostree override replace --experimental --install rocm-opencl rocm-opencl-devel rocm-smi
+toolbox create --distro fedora --release 39  
+toolbox enter fedora-39  
+sudo dnf install rocm-opencl rocm-opencl-devel rocm-smi
+sudo usermod -aG video $USER  #Kemudian reboot sistem.
+rocm-smi  #Selepas reboot, jalankan
 
 # 3. Clone repo ini
 git clone https://github.com/Rmoom/universal-ai-driver
